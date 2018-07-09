@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        MarkSteps\Providers\AppServiceProvider::class,
+        MarkSteps\Providers\AuthServiceProvider::class,
+        // MarkSteps\Providers\BroadcastServiceProvider::class,
+        MarkSteps\Providers\EventServiceProvider::class,
+        MarkSteps\Providers\RouteServiceProvider::class,
 
         /*
          * Custom Install from composer
