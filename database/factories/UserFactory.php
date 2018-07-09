@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ $factory->define(MarkSteps\User::class, function (Faker $faker) {
         'name' => "AdminDemo", //$faker->name,
         'email' => "tech@ht2ml.com.br",
         'level' => (int)1,
-        'password' => crypt("ht2ml"), // secret
+        'password' => Hash::make("ht2ml"), // secret
         'remember_token' => str_random(10),
     ];
 });
