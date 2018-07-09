@@ -60,7 +60,7 @@ class UserController extends Controller
 //            'id' => $result['user']->id,
 //            'password' => $result['password']
 //        ]);
-        return redirect()->route('admin.users.show');
+        return redirect()->route('admin.user.index');
     }
 
     /**
@@ -121,8 +121,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        //session()->flash('message', 'Usuário excluido com sucesso');
+        return redirect()->route('admin.user.index');
     }
 }

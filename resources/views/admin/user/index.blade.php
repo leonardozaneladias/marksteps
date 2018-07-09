@@ -15,9 +15,23 @@
                         Table::withContents($users->items())
                         ->striped()
                         ->callback('Ações', function ($field, $model){
+
+                            $linkDelete = route('admin.user.destroy', ['user' => $model->id]);
+
+                            $formDelete = FormBuilder::plain([
+                                'id' => 'form-delete-'.$model->id,
+                                'url' => $linkDelete,
+                                 'method' => 'DELETE',
+                                 'style' => 'display:none'
+                            ]);
+
+
+
                             $linkEdit = route('admin.user.edit', ['user' => $model->id]);
                             $linkShow = route('admin.user.show', ['user' => $model->id]);
-                            return Button::link("Editar")->asLinkTo($linkEdit).' | '.Button::link("Excluir")->asLinkTo($linkShow);
+                            return form($formDelete).' '.Button::link("Editar")->asLinkTo($linkEdit).' | '.Button::link("Excluir")->asLinkTo($linkShow)->addAttributes([
+                                'onclick' => 'event.preventDefault();document.getElementById("form-delete-'.$model->id.'").submit()'
+                            ]);
                         })
                     !!}
                 </div>
